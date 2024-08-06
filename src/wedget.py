@@ -15,7 +15,7 @@ def mask_account_card(card_info: str) -> str:
 
 def get_date(date: str) -> str:
     """Функция принимает на вход дату в формате "2024-03-11T02:26:18.671407" и возвращает - в формате 'ДД.ММ.ГГГГ'"""
-    list_date = date.split("-", 4)
+    list_date = date.split("-")
     list_date[-1] = list_date[-1][:2]
 
     return ".".join(list_date[::-1])
