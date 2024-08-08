@@ -4,10 +4,13 @@ from typing import Union
 def get_mask_card_number(card_number: Union[int, str]) -> str:
     """Функция принимает на вход номер карты и возвращает ее маску"""
 
-    if str(card_number) == "0" or str(card_number) == "":
-        return "0"
-
     mask_card_str = str(card_number)
+
+    if mask_card_str.isalpha() or len(mask_card_str) < 16 or len(mask_card_str) > 16:
+        return "Некорректный номер карты"
+
+    if mask_card_str == "0" or mask_card_str == "":
+        return "0"
 
     return mask_card_str[:4] + " " + mask_card_str[4:6] + "** " + "*" * 4 + " " + mask_card_str[12:]
 

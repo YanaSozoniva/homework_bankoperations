@@ -16,3 +16,13 @@ def test_get_mask_card_number(card_number, expected):
                                                    ])
 def test_get_mask_card_number_zero_number(card_number, expected):
     assert get_mask_card_number(card_number) == expected
+
+
+@pytest.fixture()
+def expected():
+    return "Некорректный номер карты"
+@pytest.mark.parametrize("card_number", [(70007922896),
+                                        ("70007922896063612233"),
+                                        ("1544вполло")])
+def test_get_mask_card_number_length(card_number, expected):
+    assert get_mask_card_number(card_number) == expected
