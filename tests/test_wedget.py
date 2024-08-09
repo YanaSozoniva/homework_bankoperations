@@ -33,5 +33,29 @@ def test_mask_account_card_number_input():
         mask_account_card(464589456456)
 
 
+def test_get_date():
+    assert get_date("2024-03-11T02:26:18.671407") == "11.03.2024"
 
 
+@pytest.mark.parametrize("date, expected",
+                         [("", ""),
+                          ("0", "0"),
+                          (" ", " "),
+                          ])
+def test_get_date_not_date(date, expected):
+    assert get_date(date) == expected
+
+
+
+@pytest.fixture()
+def expected_data():
+    return "11.03.2024"
+
+@pytest.mark.parametrize("date",
+                         [("2024-03-11T02:26:18.671407"),
+                          ("2024-03-11"),
+                          ("2024-03-11T02:26:18"),
+                          ("2024-03-11 02:26:18.671407"),
+                          ])
+def test_get_date_not_date(date, expected_data):
+    assert get_date(date) == expected_data
