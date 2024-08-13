@@ -1,0 +1,12 @@
+def filter_by_currency(transactions_list: list[dict], currency: str):
+    """Функция возвращает итератор, который поочередно выдает транзакции,
+    где валюта операции соответствует заданной"""
+    if len(transactions_list) == 0:
+        raise RuntimeError("Список пуст")
+
+    if all(tran["operationAmount"]["currency"]["name"] != currency for tran in transactions_list):
+        raise NameError("Транзакций с данной валютой не было")
+
+    for tran in transactions_list:
+        if tran["operationAmount"]["currency"]["name"] == currency:
+            yield tran
