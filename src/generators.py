@@ -10,3 +10,13 @@ def filter_by_currency(transactions_list: list[dict], currency: str):
     for tran in transactions_list:
         if tran["operationAmount"]["currency"]["name"] == currency:
             yield tran
+
+
+def transaction_descriptions(transactions_list: list[dict]):
+    """Функция возвращает описание каждой операции по очереди"""
+
+    if len(transactions_list) == 0:
+        raise RuntimeError("Список пуст")
+
+    for tran in transactions_list:
+        yield tran["description"]
