@@ -62,4 +62,11 @@ def test_card_number_generator_incorrect_input():
     with pytest.raises(RuntimeError):
         next(card_number_generator(5, 1))
         next(card_number_generator(-5, 1))
-        next(card_number_generator(5, 10000000000000009))
+        next(card_number_generator(0, 10000000000000009))
+
+
+def test_card_number_generator_extreme_values():
+    generator = card_number_generator(9999999999999997, 9999999999999999)
+    assert next(generator) == "9999 9999 9999 9997"
+    assert next(generator) == "9999 9999 9999 9998"
+    assert next(generator) == "9999 9999 9999 9999"
