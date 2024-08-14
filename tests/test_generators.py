@@ -1,6 +1,6 @@
 import pytest
 
-from src.generators import filter_by_currency, transaction_descriptions
+from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
 
 
 def test_filter_by_currency(transactions):
@@ -47,3 +47,19 @@ def test_transaction_descriptions(transactions):
 def test_transaction_descriptions_zero():
     with pytest.raises(RuntimeError):
         next(transaction_descriptions([]))
+
+
+def test_card_number_generator():
+    generator = card_number_generator(1, 5)
+    assert next(generator) == "0000 0000 0000 0001"
+    assert next(generator) == "0000 0000 0000 0002"
+    assert next(generator) == "0000 0000 0000 0003"
+    assert next(generator) == "0000 0000 0000 0004"
+    assert next(generator) == "0000 0000 0000 0005"
+
+
+def test_card_number_generator_incorrect_input():
+    with pytest.raises(RuntimeError):
+        next(card_number_generator(5, 1))
+        next(card_number_generator(-5, 1))
+        next(card_number_generator(5, 10000000000000009))
