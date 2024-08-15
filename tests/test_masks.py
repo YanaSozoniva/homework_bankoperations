@@ -24,7 +24,7 @@ def expected():
     return "Некорректный номер карты"
 
 
-@pytest.mark.parametrize("card_number", [(70007922896), ("700079228960636122333489789745"), ("1544вполло")])
+@pytest.mark.parametrize("card_number", [(70007922898), ("700079228960636122333489789745"), ("1544вполло")])
 def test_get_mask_card_number_length(card_number, expected):
     assert get_mask_card_number(card_number) == expected
 
