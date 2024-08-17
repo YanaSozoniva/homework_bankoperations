@@ -37,16 +37,17 @@ def log(file_name: Any = None) -> Callable:
                         f.write(message)
                 else:
                     print(message)
+            return result
 
         return inner
 
     return wrapper
 
 
-if __name__ == "__main__":
-
-    @log()
-    def my_function(x, y):
-        return x + y
-
-    my_function(2, "l")
+# if __name__ == "__main__":
+#
+#     @log()
+#     def my_function(x, y):
+#         return x + y
+#
+#     my_function("2", 3)
