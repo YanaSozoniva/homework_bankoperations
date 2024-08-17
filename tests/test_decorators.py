@@ -16,7 +16,7 @@ def test_log(capsys):
 
 
 
-def test_log_console_input(capsys):
+def test_log_console_input_success(capsys):
     """Тестирует запись в консоль после успешного выполнения"""
 
     @log()
@@ -28,7 +28,7 @@ def test_log_console_input(capsys):
     assert captured.out == "Функция my_function выполнилась успешно. Результат ее работы - 5.\n"
 
 
-def test_log_console_input(capsys):
+def test_log_console_input_error(capsys):
     """Тестирует запись в консоль после выполнения с ошибкой"""
 
     @log()
@@ -44,7 +44,7 @@ def test_log_console_input(capsys):
     )
 
 
-def test_log_file_input(capsys):
+def test_log_file_input_success(capsys):
     """Тестирует запись в файл после успешного выполнения"""
     with tempfile.NamedTemporaryFile(delete=False) as f:
         log_file_path = f.name
@@ -60,7 +60,7 @@ def test_log_file_input(capsys):
     assert logs == "Функция my_function выполнилась успешно. Результат ее работы - 3."
 
 
-def test_log_file_input(capsys):
+def test_log_file_input_error(capsys):
     """Тестирует запись в файл после выполнения с ошибкой"""
     with tempfile.NamedTemporaryFile(delete=False) as f:
         log_file_path = f.name
