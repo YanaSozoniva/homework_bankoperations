@@ -165,6 +165,52 @@ for card_number in card_number_generator(1, 5):
 -->Функция my_function не выполнилась. Тип ошибки can only concatenate str (not "int") to str. 
  Входные данные: args = ('2', 3), kwargs = {}.
 
+## Модуль utils
+#### Функция get_financial_transaction_data
+Функция принимает на вход путь до JSON-файла и возвращает список словарей с данными о финансовых транзакциях.
+Возвращает список словарей с данными о финансовых транзакциях.Если файл пустой, содержит не список или не найден, 
+функция возвращает пустой список."""
+
+Вывод функции
+get_financial_transaction_data(r"C:\Users\user\Desktop\skyPro\practic\Home_work\ClientBankOperations\data\operations.json"
+-->[{'id': 441945886, 'state': 'EXECUTED', 'date': '2019-08-26T10:50:58.294041', 'operationAmount': 
+{'amount': '31957.58', 'currency': {'name': 'руб.', 'code': 'RUB'}}, 'description': 'Перевод организации',
+'from': 'Maestro 1596837868705199', 'to': 'Счет 64686473678894779589'}, {'id': 41428829, 'state': 'EXECUTED', 
+'date': '2019-07-03T18:35:29.512364', 'operationAmount': {'amount': '8221.37', 'currency': {'name': 'USD', 'code': 'USD'}},
+'description': 'Перевод организации', 'from': 'MasterCard 7158300734726758', 'to': 'Счет 35383033474447895560'}, ]
+
+## Модуль external_api
+#### Функция convert_to_rubles
+Функция обращается к внешнему API для получения текущего курса валют и конвертирует сумму операции в рубли.
+
+Вывод функции
+convert_to_rubles("USD", 1)
+-->{
+  "date": "2024-08-28",
+  "historical": "",
+  "info": {
+    "rate": 148.972231,
+    "timestamp": 1519328414
+  },
+  "query": {
+    "amount": 1,
+    "from": "USD",
+    "to": "RUB"
+  },
+  "result": 91.599176,
+  "success": true
+}
+
+#### Функция get_sum_transaction
+Функция принимает на вход транзакцию и возвращает сумму транзакции (amount) в рублях. Если транзакция была
+в другой валюте - суммы операции конвертируется в рубли
+
+Вывод функции
+trans = {'id': 441945886, 'date': '2019-08-26T10:50:58.294041', 'operationAmount': {'amount': '31957.58', 'currency': 
+{'name': 'руб.', 'code': 'RUB'}}}
+get_sum_transaction(trans)
+-->31957.58
+
 ## Тестирование
 Проект покрыт unit-тестами. Для тестирования использовался фреймворк pytest. 
 Для их запуска выполните команду:
