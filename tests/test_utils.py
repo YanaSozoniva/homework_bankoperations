@@ -12,6 +12,7 @@ def path_f():
 
 
 def test_get_financial_transaction_data(path_f):
+    """Тестирует успешною десериализацию в список словарей"""
     mock_json_objict = Mock(return_value=[{"id": 441945886, "state": "EXECUTED"}])
     json.load = mock_json_objict
     assert get_financial_transaction_data(path_f) == [{"id": 441945886, "state": "EXECUTED"}]
@@ -19,11 +20,13 @@ def test_get_financial_transaction_data(path_f):
 
 
 def test_get_financial_transaction_data_not_found_file():
+    """Тестирует получение пустого списка, если файл не найден"""
     path_file = r"C:\Users\user\Desktop\skyPro\ClientBankOperations\data\operations.json"
     assert get_financial_transaction_data(path_file) == []
 
 
 def test_get_financial_transaction_data_error_json(path_f):
+    """Тестирует получение пустого списка, если данные не корректны"""
     mock_json_objict = Mock(return_value=[])
     json.load = mock_json_objict
     assert get_financial_transaction_data(path_f) == []
