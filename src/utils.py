@@ -1,10 +1,11 @@
 import json
 from os.path import exists
-from typing import Any
+from typing import Iterable
 
 
-def get_financial_transaction_data(path_file: str) -> Any:
+def get_financial_transaction_data(path_file: str) -> Iterable:
     """Функция возвращает список словарей с данными о финансовых транзакциях."""
+    transactions = []
     if not exists(path_file):
         return []
     else:
@@ -12,9 +13,9 @@ def get_financial_transaction_data(path_file: str) -> Any:
             try:
                 transactions = json.load(json_file)
             except json.JSONDecodeError:
-                return []
+                return transactions
             except TypeError:
-                return []
+                return transactions
 
     return transactions
 
