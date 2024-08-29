@@ -20,7 +20,7 @@ def log(file_name: Any = None) -> Callable:
                     f"Входные данные: args = {args}, kwargs = {kwargs}."
                 )
                 if file_name:
-                    base_path = r"C:\Users\user\Desktop\skyPro\practic\Home_work\ClientBankOperations\logs_file"
+                    base_path = r"C:\Users\user\Desktop\skyPro\practic\Home_work\ClientBankOperations\logs"
                     full_path = os.path.join(base_path, file_name)
 
                     with open(full_path, "w", encoding="utf-8") as f:
@@ -30,7 +30,7 @@ def log(file_name: Any = None) -> Callable:
             else:
                 message = f"Функция {func.__name__} выполнилась успешно. Результат ее работы - {result}."
                 if file_name:
-                    base_path = r"C:\Users\user\Desktop\skyPro\practic\Home_work\ClientBankOperations\logs_file"
+                    base_path = r"C:\Users\user\Desktop\skyPro\practic\Home_work\ClientBankOperations\logs"
                     full_path = os.path.join(base_path, file_name)
 
                     with open(full_path, "w", encoding="utf-8") as f:
