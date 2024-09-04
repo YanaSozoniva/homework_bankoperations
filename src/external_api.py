@@ -15,7 +15,7 @@ def convert_to_rubles(currency_cod: str, amount: float) -> float:
     response = requests.get(url, headers=headers)
 
     if response.status_code != 200:
-        raise ValueError(f"Не удалось получить курс валюты")
+        raise ValueError("Не удалось получить курс валюты")
 
     total_amount = response.json()["result"]
 
@@ -42,5 +42,6 @@ def get_sum_transaction(transaction: dict) -> float:
 
 
 # if __name__ == "__main__":
-#     trans = {'id': 441945886, 'date': '2019-08-26T10:50:58.294041', 'operationAmount': {'amount': '31957.58', 'currency': {'name': 'руб.', 'code': 'RUB'}}}
+#     trans = {'id': 441945886, 'date': '2019-08-26T10:50:58.294041', 'operationAmount':
+#     {'amount': '31957.58', 'currency': {'name': 'руб.', 'code': 'RUB'}}}
 #     print(get_sum_transaction(trans))

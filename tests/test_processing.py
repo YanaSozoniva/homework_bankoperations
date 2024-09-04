@@ -92,12 +92,14 @@ def test_sort_by_date_same_dates():
 
 @pytest.fixture()
 def date():
- return [
-        {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03"},
-        {"id": 939719570, "state": "EXECUTED", "date": ""},
-        {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T 21:27:25.241689"},
-        {"id": 615064591, "state": "CANCELED", "date": "2018-10"},
+    return [
+     {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03"},
+     {"id": 939719570, "state": "EXECUTED", "date": ""},
+     {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T 21:27:25.241689"},
+     {"id": 615064591, "state": "CANCELED", "date": "2018-10"},
     ]
+
+
 def test_sort_by_date_invalid_dates(date):
     assert sort_by_date(date) == [
         {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03"},
