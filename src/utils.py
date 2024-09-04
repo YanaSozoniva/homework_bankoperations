@@ -1,6 +1,5 @@
 import json
 import logging
-
 from os.path import exists
 from typing import Iterable
 
@@ -25,10 +24,10 @@ def get_financial_transaction_data(path_file: str) -> Iterable:
                 logger.info("Считываются данные из файла с данными в json - формате")
                 transactions = json.load(json_file)
             except json.JSONDecodeError:
-                logger.error(f"Произошла ошибка: json.JSONDecodeError")
+                logger.error("Произошла ошибка: json.JSONDecodeError")
                 return transactions
             except TypeError:
-                logger.error(f"Произошла ошибка: TypeError")
+                logger.error("Произошла ошибка: TypeError")
                 return transactions
 
     return transactions

@@ -42,12 +42,12 @@ def test_convert_to_rubles_no_currency():
         with pytest.raises(ValueError, match="Нет информации по валюте USD"):
             convert_to_rubles("USD", 1)
 
+
 @pytest.mark.parametrize("tran, expected", [
-    ({'id': 441945886, 'operationAmount': {'amount': '31957.58', 'currency':
-        {'name': 'руб.', 'code': 'RUB'}}}, 31957.58),
-    ({'id': 441945886, 'operationAmount': {'amount': '1', 'currency':
-        {'name': 'руб.', 'code': 'RUB'}}}, 1),
-        ({}, 0),
+    ({'id': 441945886, 'operationAmount': {'amount': '31957.58', 'currency': {'name': 'руб.', 'code': 'RUB'}}},
+     31957.58),
+    ({'id': 441945886, 'operationAmount': {'amount': '1', 'currency': {'name': 'руб.', 'code': 'RUB'}}}, 1),
+    ({}, 0),
 ])
 def test_get_sum_transaction_only_rub(tran, expected):
     """Тестирование вывода суммы транзакции в рублях или пустого словаря"""
@@ -65,4 +65,3 @@ def test_get_sum_transaction_other_currency(mock_convert):
     result = get_sum_transaction(trans)
     assert result == 1
     mock_convert.assert_called_once()
-

@@ -211,6 +211,21 @@ trans = {'id': 441945886, 'date': '2019-08-26T10:50:58.294041', 'operationAmount
 get_sum_transaction(trans)
 -->31957.58
 
+
+## Модуль export_data_from_file
+#### Функция export_data_from_csv и функция export_data_from_xlsx
+Функция считывание финансовых операций из CSV-файла/XLSX-файла и возвращает список словарей с транзакциями
+
+Вывод функций
+[
+{'id': 650703.0, 'state': 'EXECUTED', 'date': '2023-09-05T11:30:32Z', 'amount': 16210.0, 
+'currency_name': 'Sol', 'currency_code': 'PEN', 'from': 'Счет 58803664561298323391', 
+'to': 'Счет 39745660563456619397', 'description': 'Перевод организации'}, 
+{'id': 3598919.0, 'state': 'EXECUTED', 'date': '2020-12-06T23:00:58Z', 'amount': 29740.0, 
+'currency_name': 'Peso', 'currency_code': 'COP', 'from': 'Discover 3172601889670065', '
+to': 'Discover 0720428384694643', 'description': 'Перевод с карты на карту'}
+]
+
 ## Тестирование
 Проект покрыт unit-тестами. Для тестирования использовался фреймворк pytest. 
 Для их запуска выполните команду:

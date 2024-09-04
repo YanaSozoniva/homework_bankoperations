@@ -4,7 +4,7 @@ import pytest
 import tempfile
 
 
-def test_log(capsys):
+def test_log():
     """Тестирует выполнение декорированной функции"""
 
     @log()
@@ -13,7 +13,6 @@ def test_log(capsys):
 
     result = my_function(2, 3)
     assert result == 5
-
 
 
 def test_log_console_input_success(capsys):
@@ -44,7 +43,7 @@ def test_log_console_input_error(capsys):
     )
 
 
-def test_log_file_input_success(capsys):
+def test_log_file_input_success():
     """Тестирует запись в файл после успешного выполнения"""
     with tempfile.NamedTemporaryFile(delete=False) as f:
         log_file_path = f.name
@@ -60,7 +59,7 @@ def test_log_file_input_success(capsys):
     assert logs == "Функция my_function выполнилась успешно. Результат ее работы - 3."
 
 
-def test_log_file_input_error(capsys):
+def test_log_file_input_error():
     """Тестирует запись в файл после выполнения с ошибкой"""
     with tempfile.NamedTemporaryFile(delete=False) as f:
         log_file_path = f.name
