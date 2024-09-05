@@ -63,7 +63,7 @@ def test_card_number_generator_incorrect_input():
         next(card_number_generator(5, 1))
         next(card_number_generator(-5, 1))
         next(card_number_generator(0, 10000000000000009))
-        next(card_number_generator('з', 10000000000000009))
+        next(card_number_generator("з", 10000000000000009))
 
 
 def test_card_number_generator_extreme_values():

@@ -1,7 +1,8 @@
-from src.decorators import log
+import tempfile
 
 import pytest
-import tempfile
+
+from src.decorators import log
 
 
 def test_log():
