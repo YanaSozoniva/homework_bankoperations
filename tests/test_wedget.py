@@ -70,5 +70,5 @@ def expected_data():
         ("2024-03-11 02:26:18.671407"),
     ],
 )
-def test_get_date_not_date(date, expected_data):
+def test_get_date_success(date, expected_data):
     assert get_date(date) == expected_data
