@@ -7,11 +7,14 @@ def filter_by_currency(transactions_list: list[dict], currency: str) -> Generato
     if len(transactions_list) == 0:
         raise RuntimeError("Список пуст")
 
-    if all(tran["operationAmount"]["currency"]["code"] != currency for tran in transactions_list):
+    if (all(tran.get("operationAmount", {}).get("currency", {}).get("code") !=
+            currency for tran in transactions_list)
+            and (all(tran.get("currency_code") != currency for tran in transactions_list))):
         raise NameError("Транзакций с данной валютой не было")
 
     for tran in transactions_list:
-        if tran["operationAmount"]["currency"]["code"] == currency:
+        if (tran.get("operationAmount", {}).get("currency", {}).get("code") == currency
+                or tran.get("currency_code") == currency):
             yield tran
 
 

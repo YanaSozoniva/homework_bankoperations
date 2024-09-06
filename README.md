@@ -16,6 +16,10 @@ git clone git@github.com:YanaSozoniva/homework_bankoperations.git
 ```
 git clone https://github.com/YanaSozoniva/homework_bankoperations.git
 ```
+## Запуск приложения:
+
+Введите команду: python main.py
+
 
 ## Разработанные функции и примеры работы с ними:
 ### Модуль Processing
@@ -225,6 +229,41 @@ get_sum_transaction(trans)
 'currency_name': 'Peso', 'currency_code': 'COP', 'from': 'Discover 3172601889670065', '
 to': 'Discover 0720428384694643', 'description': 'Перевод с карты на карту'}
 ]
+
+
+## Модуль filter_transactions
+#### Функция filter_by_operations
+Функция принимает список словарей с данными о банковских операциях и строку поиска, а возвращать список словарей,
+у которых в описании есть данная строка
+
+Вывод функций
+filter_by_operations(transactions, "ПЕРЕвод")
+--> [{
+            "id": 895315941,
+            "state": "EXECUTED",
+            "date": "2018-08-19T04:27:37.904916",
+            "operationAmount": {"amount": "56883.54", "currency": {"name": "USD", "code": "USD"}},
+            "description": "Перевод с карты на карту",
+            "from": "Visa Classic 6831982476737658",
+            "to": "Visa Platinum 8990922113665229",
+        },
+        {
+            "id": 594226727,
+            "state": "CANCELED",
+            "date": "2018-09-12T21:27:25.241689",
+            "operationAmount": {"amount": "67314.70", "currency": {"name": "руб.", "code": "RUB"}},
+            "description": "Перевод организации",
+            "from": "Visa Platinum 1246377376343588",
+            "to": "Счет 14211924144426031657",
+        }]
+
+#### Функция get_count_transactions_by_category
+Функция принимает список с данными о банковских операциях и список категорий операций, а возвращает словарь 
+с названиями категории и количество операций в каждой категории (по умолчанию - выводит список всех найденных категорий и их количество)
+
+Вывод функций
+get_count_transactions_by_category(transactions, ["Перевод со счета на счет", "Перевод с карты на карту"])
+-->{"Перевод со счета на счет": 2, "Перевод с карты на карту": 1}
 
 ## Тестирование
 Проект покрыт unit-тестами. Для тестирования использовался фреймворк pytest. 

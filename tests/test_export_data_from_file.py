@@ -37,7 +37,7 @@ def expected():
 
 @pytest.fixture
 def path_csv():
-    return r"C:\Users\user\Desktop\skyPro\practic\Home_work\ClientBankOperations\transactions.csv"
+    return r"C:\Users\user\Desktop\skyPro\practic\Home_work\ClientBankOperations\data\transactions.csv"
 
 
 @patch("src.export_data_from_file.csv.DictReader")
@@ -90,7 +90,7 @@ def test_export_data_from_csv_zero(mock_reader, path_csv):
 
 @pytest.fixture
 def path_exl():
-    return r"C:\Users\user\Desktop\skyPro\practic\Home_work\ClientBankOperations\transactions.csv"
+    return r"C:\Users\user\Desktop\skyPro\practic\Home_work\ClientBankOperations\data\transactions.csv"
 
 
 @pytest.fixture
