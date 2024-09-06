@@ -28,7 +28,7 @@ def filter_by_operations(transactions: list[dict], request: str) -> list[dict]:
 
 def get_count_transactions_by_category(transactions: list[dict], operations: list = None) -> dict:
     """Функция принимает список с данными о банковских операциях и список категорий операций,
-    а возвращать словарь с названиями категории и количество операций в каждой категории
+    а возвращает словарь с названиями категории и количество операций в каждой категории
     (по умолчанию - выводит список всех найденных категорий и их количество)"""
     logger.info("Формирование словаря с категориями")
     categories = [tran.get("description") for tran in transactions]
